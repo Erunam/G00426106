@@ -1,0 +1,12 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+# Ignore everything
+*
+
+# Unignore the .gitignore file itself (optional but recommended)
+!.gitignore
+
+# Unignore the specific directory and all its contents
+!src/
+!src/**
