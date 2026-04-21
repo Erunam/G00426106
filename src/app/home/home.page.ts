@@ -3,6 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/a
 import { MyHttp } from '../services/myhttp';
 import { HttpOptions } from '@capacitor/core';
 import { Storage } from '@ionic/storage-angular';
+import { MyData } from '../services/data';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Storage } from '@ionic/storage-angular';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton],
 })
 export class HomePage {
-  constructor(private myhttp:MyHttp, private storage: Storage) {}
+  constructor(private mydata: MyData, private mhttp: MyHttp) {}
   
   options: HttpOptions =
   {
@@ -22,13 +23,23 @@ export class HomePage {
   baseUrl: string = "";
   posterSizes: any;
 
+  ngOnInit()
+  {
+
+
+  }
+
   async setBaseUrl()
   {
+    this.mydata.set('test', 'test');
+    console.log("test");
+    /*
     let result = await this.myhttp.getBaseUrl(this.options);
     this.baseUrl = result.image.baseurl;
     this.posterSizes = result.image.poster_sizes;
-
-    this.storage.set("baseUrl", this.baseUrl);
-    this.storage.set("posterSizes", JSON.stringify(this.posterSizes))
+  
+    this.storage.set("baseUrl", "test1"); //this.baseUrl
+    this.storage.set("posterSizes", "test2"); //JSON.stringify(this.posterSizes))
+    */
   }
 }
