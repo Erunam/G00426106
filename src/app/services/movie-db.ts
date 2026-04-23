@@ -26,10 +26,10 @@ export class MovieDB {
   
   constructor(private mydata: MyData ) {}
 
-  async getMovieCredit(persond: number)
+  async getMovieCredit(personId: number)
   {
     let apiKey = await this.mydata.get("apiKey");
-    this.options.url = this.movieCredit_1 + persond + this.movieCredit_2 + apiKey;
+    this.options.url = this.movieCredit_1 + personId + this.movieCredit_2 + apiKey;
     return await this.get(this.options);
   }
 
@@ -47,6 +47,13 @@ export class MovieDB {
     return await this.get(this.options);
   }
   
+  async getMovies(keyword: string)
+  {
+    let apiKey = await this.mydata.get("apiKey");
+    this.options.url = this.movieSearch_1 + keyword + this.movieSearch_2 + apiKey;
+    return await this.get(this.options);
+  }
+
   async getTrendingMovie()
   {
     let apiKey = await this.mydata.get("apiKey");
