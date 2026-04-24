@@ -14,13 +14,13 @@
   <ion-button (click)="getTrending()">Trending</ion-button> <br/>
   <ion-button (click)="searchClick('avengers')">Search</ion-button> <br/>
 
-<ion-card *ngFor="let movie of movieData">
+<ion-card *ngFor="let movie of movieData" (click) = "onClick(movie.id)">
+  <img [src]="posterBaseUrl+movie.poster_path" />
   <ion-card-header>
-    <ion-card-title></ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    <ion-card-title>{{movie.title}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
+    {{movie.overview}}
   </ion-card-content>
 </ion-card>
 

@@ -51,3 +51,11 @@ ion-grid {
   --ion-grid-column-padding-lg: 10px;
   --ion-grid-column-padding-xl: 10px;
 }
+
+img {
+  object-fit: none;
+  padding-top: 1%;
+  padding-right: 2%;
+  padding-bottom: 0px;
+  padding-left: 2%;
+}
