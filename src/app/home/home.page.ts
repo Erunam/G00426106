@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from '@ionic/angular/standalone';
 import { MovieDB } from '../services/movie-db';
 import { MyData } from '../services/data';
 
@@ -7,24 +7,33 @@ import { MyData } from '../services/data';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent],
 })
 export class HomePage {
   name = "G00426106";
   keyword = "";
   movieData: any;
+  baseUrl = "";
+  posterSize = "";
+  posterBaseUrl = "";
+  posterSizeIndex = 0;
 
   constructor(private mydata: MyData, private movie: MovieDB) {}
   
-  ngOnInit()
-  {
+  ngOnInit(){
     this.runApp();
+  }
+
+  async ngOnDestroy(){
+    console.log("destroy Home Page ...");
+    await this.mydata.remove("keyword");
   }
 
   async runApp()
   {
     await this.checkFirstRun();
     await this.getKeyword();
+    await this.setPosterBaseUrl();
     this.getMovies();
   }
 
@@ -51,6 +60,15 @@ export class HomePage {
   async getKeyword()
   {
     this.keyword = await this.mydata.get("keyword");
+  }
+
+  async setPosterBaseUrl(){
+    console.log("setPosterBaseUrl");
+    let baseUrl = await this.mydata.get("baseUrl");
+    let sizes = JSON.parse(await this.mydata.get("posterSizes"));
+    let posterSize = sizes[this.posterSizeIndex];
+    this.posterBaseUrl = baseUrl + posterSize;
+    console.log(this.posterBaseUrl);
   }
   
   async searchMovies(keyword: string)
@@ -88,6 +106,7 @@ export class HomePage {
     await this.movie.setBaseUrl();
     console.log("first run done");
   }
+  
 }
 
 /*

@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
   <diagram name="Page-1" id="xlOsiF5kw3km7Ec9J5x-">
-    <mxGraphModel dx="1294" dy="259" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2031" dy="687" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,7 +19,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Nj7hN5pLqxYRTGapLSOG-3" value="movieId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pxfYliNpV-M7IL9m8sk--164">
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-3" value="movieId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="pxfYliNpV-M7IL9m8sk--164" vertex="1" connectable="0">
           <mxGeometry x="-0.9072" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -119,13 +119,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--28" value="&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;&lt;b&gt;Get trending movie&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;https://api.themoviedb.org/3/trending/movie/day?api_key=&lt;/span&gt;&lt;span class=&quot;fontstyle1&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;br style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; line-height: normal; text-size-adjust: auto;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="970" width="500" height="40" as="geometry" />
+          <mxGeometry x="-370" y="960" width="610" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--78" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="pxfYliNpV-M7IL9m8sk--29" target="pxfYliNpV-M7IL9m8sk--75" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pxfYliNpV-M7IL9m8sk--29" value="&lt;b&gt;Search for movies&lt;/b&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;https://api.themoviedb.org/3/search/movie?query=&lt;b&gt;{movie title}&lt;/b&gt;&amp;amp;api_key=&lt;/span&gt;&lt;span class=&quot;fontstyle2&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;br style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; line-height: normal; text-align: -webkit-auto; text-size-adjust: auto;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1020" width="500" height="40" as="geometry" />
+        <mxCell id="pxfYliNpV-M7IL9m8sk--29" value="&lt;b&gt;Search for movies&lt;/b&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;https://api.themoviedb.org/3/search/movie?query=&lt;b&gt;{movie title}&lt;/b&gt;&amp;amp;api_key=&lt;/span&gt;&lt;span class=&quot;fontstyle2&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;br style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; line-height: normal; text-align: -webkit-auto; text-size-adjust: auto;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle2&quot;&gt;https://api.themoviedb.org/3/search/movie?query=avengers&amp;amp;api_key=e132512c4c29d4cde63e3ee5621ba016&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-370" y="1020" width="610" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--32" value="CapacitorHttp.get()" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="-140" y="800" width="250" height="40" as="geometry" />
@@ -162,7 +162,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--40" value="&lt;div&gt;&lt;b&gt;Get base url&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;https://api.themoviedb.org/3/configuration?api_key=&lt;/span&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;https://api.themoviedb.org/3/configuration?api_key=&lt;/span&gt;&lt;span style=&quot;font-size: 11px; font-weight: 700; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;e132512c4c29d4cde63e3ee5621ba016&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&lt;b&gt;2nd option&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;options = {&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;url: &#39;https://api.themoviedb.org/3/configuration&#39;,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;headers: {&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &#39;Authorization&#39;: &#39;Bearer&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;YOUR_TMDB_ACCESS_TOKEN&#39;,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &#39;accept&#39;: &#39;application/json&#39;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;// alternative with api_key as a parameter&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;params: { api_key: &#39;YOUR_API_KEY&#39; }&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1070" width="500" height="190" as="geometry" />
+          <mxGeometry x="-370" y="1080" width="610" height="200" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--42" value="Data returned:&lt;div&gt;data.&lt;b&gt;images.base_url&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;images.poster_sizes&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;align=left;" parent="1" vertex="1">
           <mxGeometry x="-600" y="1110" width="150" height="60" as="geometry" />
@@ -171,7 +171,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--46" value="&lt;div&gt;&lt;b style=&quot;&quot;&gt;Get poster url (poster_path)&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;font-size: 11px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;return base_url + poster_size[&lt;b style=&quot;&quot;&gt;size&lt;/b&gt;]+&quot;/&quot;+poster_path&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;labelBackgroundColor=none;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1270" width="500" height="60" as="geometry" />
+          <mxGeometry x="-370" y="1290" width="610" height="60" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--51" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="pxfYliNpV-M7IL9m8sk--48" target="pxfYliNpV-M7IL9m8sk--37" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -180,7 +180,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Nj7hN5pLqxYRTGapLSOG-1" value="movieId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pxfYliNpV-M7IL9m8sk--51">
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-1" value="movieId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="pxfYliNpV-M7IL9m8sk--51" vertex="1" connectable="0">
           <mxGeometry x="-0.6281" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -192,7 +192,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--52" value="&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;&lt;b&gt;Get movie data&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;https://api.themoviedb.org/3/movie/&lt;b&gt;{movie_id}&lt;/b&gt;/credits?api_key=YOUR_API_KEY&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1340" width="500" height="40" as="geometry" />
+          <mxGeometry x="-370" y="1360" width="610" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--57" value="Get movie data" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="280" y="160" width="120" height="40" as="geometry" />
@@ -262,7 +262,7 @@
         <mxCell id="pxfYliNpV-M7IL9m8sk--87" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="pxfYliNpV-M7IL9m8sk--83" target="pxfYliNpV-M7IL9m8sk--86" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pxfYliNpV-M7IL9m8sk--88" value="Service&lt;div&gt;Storage&lt;br&gt;&lt;div&gt;&lt;div&gt;StoreData&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
+        <mxCell id="pxfYliNpV-M7IL9m8sk--88" value="Service&lt;div&gt;Storage&lt;br&gt;&lt;div&gt;&lt;div&gt;Favourites&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="460" y="740" width="640" height="40" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--89" value="&lt;div&gt;Add to favourites&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
@@ -351,7 +351,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Nj7hN5pLqxYRTGapLSOG-2" value="personId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="pxfYliNpV-M7IL9m8sk--170">
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-2" value="personId" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="pxfYliNpV-M7IL9m8sk--170" vertex="1" connectable="0">
           <mxGeometry x="-0.53" y="-3" relative="1" as="geometry">
             <mxPoint x="-3" y="22" as="offset" />
           </mxGeometry>
@@ -414,13 +414,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--135" value="&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;&lt;b&gt;Get member data&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;https://api.themoviedb.org/3/person/&lt;b&gt;{person_id}&lt;/b&gt;?api_key=YOUR_API_KEY&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1390" width="500" height="40" as="geometry" />
+          <mxGeometry x="-370" y="1410" width="610" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--138" value="Get member data" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="920" y="160" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--140" value="Data returned:&lt;div&gt;data.&lt;b&gt;id&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;also_known_as&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;biography&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;data.&lt;/span&gt;&lt;b style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;birthday&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;deathday&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data&lt;b&gt;.name&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;place_of_birth&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data.&lt;b&gt;profile_path&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;align=left;" parent="1" vertex="1">
-          <mxGeometry x="230" y="1290" width="150" height="130" as="geometry" />
+          <mxGeometry x="370" y="1310" width="150" height="130" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--163" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="pxfYliNpV-M7IL9m8sk--141" target="pxfYliNpV-M7IL9m8sk--153" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -442,11 +442,11 @@
         <mxCell id="pxfYliNpV-M7IL9m8sk--185" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="pxfYliNpV-M7IL9m8sk--150" target="pxfYliNpV-M7IL9m8sk--152" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pxfYliNpV-M7IL9m8sk--150" value="&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;&lt;b&gt;Get movie credit&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle1&quot;&gt;https://api.themoviedb.org/3/person/&lt;b&gt;{person_id}&lt;/b&gt;/movie_credits?api_key=&lt;/span&gt;&lt;span class=&quot;fontstyle2&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;br style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; line-height: normal; text-align: -webkit-auto; text-size-adjust: auto;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
-          <mxGeometry x="-370" y="1440" width="500" height="40" as="geometry" />
+        <mxCell id="pxfYliNpV-M7IL9m8sk--150" value="&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle0&quot;&gt;&lt;b&gt;Get movie credit&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle1&quot;&gt;https://api.themoviedb.org/3/person/&lt;b&gt;{person_id}&lt;/b&gt;/movie_credits?api_key=&lt;/span&gt;&lt;span class=&quot;fontstyle2&quot;&gt;YOUR_API_KEY&lt;/span&gt;&lt;br style=&quot;font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; font-variant-position: normal; font-variant-emoji: normal; line-height: normal; text-align: -webkit-auto; text-size-adjust: auto;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span class=&quot;fontstyle2&quot;&gt;https://api.themoviedb.org/3/person/91671/movie_credits?api_key=e132512c4c29d4cde63e3ee5621ba016&lt;div&gt;&lt;br style=&quot;text-align: center;&quot;&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;" parent="1" vertex="1">
+          <mxGeometry x="-370" y="1460" width="610" height="50" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--152" value="Data returned:&lt;div&gt;data[].&lt;b&gt;cast[].id&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data[].&lt;b&gt;cast[].title&lt;/b&gt;&lt;/div&gt;&lt;div&gt;data[].&lt;b&gt;cast[].poster_path&lt;br&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;align=left;" parent="1" vertex="1">
-          <mxGeometry x="230" y="1430" width="150" height="60" as="geometry" />
+          <mxGeometry x="370" y="1450" width="150" height="60" as="geometry" />
         </mxCell>
         <mxCell id="pxfYliNpV-M7IL9m8sk--153" value="Movie Click" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;labelBackgroundColor=none;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="920" y="625" width="120" height="40" as="geometry" />
@@ -519,8 +519,24 @@
         <mxCell id="pxfYliNpV-M7IL9m8sk--186" value="&lt;div&gt;&lt;span&gt;&lt;span style=&quot;&quot;&gt;Data returned&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;span style=&quot;&quot;&gt;base_url + poster_size[&lt;/span&gt;&lt;b style=&quot;&quot;&gt;size&lt;/b&gt;&lt;span style=&quot;&quot;&gt;]+&quot;/&quot;+poster_path&lt;/span&gt;&lt;/span&gt;&lt;b&gt;&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=none;align=left;" parent="1" vertex="1">
           <mxGeometry x="-680" y="1240" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="yeUAG1aVFQV76CvLHswX-1" value="https://api.themoviedb.org/3/person/91671/movie_credits?api_key=e132512c4c29d4cde63e3ee5621ba016&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-470" y="1500" width="740" height="30" as="geometry" />
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" parent="1" source="Nj7hN5pLqxYRTGapLSOG-5" target="pxfYliNpV-M7IL9m8sk--22" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-740" y="720" />
+              <mxPoint x="-210" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-7" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" parent="1" source="Nj7hN5pLqxYRTGapLSOG-5" target="pxfYliNpV-M7IL9m8sk--88" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-740" y="720" />
+              <mxPoint x="780" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Nj7hN5pLqxYRTGapLSOG-5" value="Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="-800" y="640" width="120" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

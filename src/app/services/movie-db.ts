@@ -30,6 +30,7 @@ export class MovieDB {
   {
     let apiKey = await this.mydata.get("apiKey");
     this.options.url = this.movieCredit_1 + personId + this.movieCredit_2 + apiKey;
+    console.log(this.options.url);
     return await this.get(this.options);
   }
 
@@ -37,6 +38,7 @@ export class MovieDB {
   {
     let apiKey = await this.mydata.get("apiKey");
     this.options.url = this.memberData_1 + personId + this.memberData_2 + apiKey;
+    console.log(this.options.url);
     return await this.get(this.options);
   }
 
@@ -44,6 +46,7 @@ export class MovieDB {
   {
     let apiKey = await this.mydata.get("apiKey");
     this.options.url = this.movieData_1 + id + this.movieData_2 + apiKey;
+    console.log(this.options.url);
     return await this.get(this.options);
   }
   
@@ -51,6 +54,7 @@ export class MovieDB {
   {
     let apiKey = await this.mydata.get("apiKey");
     this.options.url = this.movieSearch_1 + keyword + this.movieSearch_2 + apiKey;
+    console.log(this.options.url);
     return await this.get(this.options);
   }
 
@@ -58,7 +62,7 @@ export class MovieDB {
   {
     let apiKey = await this.mydata.get("apiKey");
     this.options.url = this.movieTrendingUrl + apiKey;
-
+    console.log(this.options.url);
     return await this.get(this.options);
   }
 
