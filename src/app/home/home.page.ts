@@ -19,7 +19,7 @@ export class HomePage {
   baseUrl = "";
   posterSize = "";
   posterBaseUrl = "";
-  posterSizeIndex = 0;
+  posterSizeIndex = 2;
   apiKey = "e132512c4c29d4cde63e3ee5621ba016";
 
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {}
