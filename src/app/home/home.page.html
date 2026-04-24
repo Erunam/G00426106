@@ -10,11 +10,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- 
-  <ion-button (click)="getTrending()">Trending</ion-button> <br/>
-  <ion-button (click)="searchClick('avengers')">Search</ion-button> <br/>
+<ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
+<ion-button (click)="onSearchClick()">Search</ion-button> <br/>
 
-<ion-card *ngFor="let movie of movieData" (click) = "onClick(movie.id)">
+<ion-card *ngFor="let movie of movieData" (click) = "onCardClick(movie.id)">
   <img [src]="posterBaseUrl+movie.poster_path" />
   <ion-card-header>
     <ion-card-title>{{movie.title}}</ion-card-title>

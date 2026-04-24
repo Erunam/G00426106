@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput } from '@ionic/angular/standalone';
 import { MovieDB } from '../services/movie-db';
 import { MyData } from '../services/data';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [CommonModule, IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent],
+  imports: [FormsModule, CommonModule, IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput],
 })
 export class HomePage {
   name = "G00426106";
@@ -32,7 +33,12 @@ export class HomePage {
     await this.mydata.remove("keyword");
   }
 
-  async onClick(movieId: number){
+  async onSearchClick(){
+    await this.mydata.set("keyword", this.keyword);
+    await this.getMovies();
+  }
+
+  async onCardClick(movieId: number){
     console.log(movieId);
     await this.mydata.set("movieId", movieId);
     this.router.navigate(['/movies']);
@@ -44,14 +50,6 @@ export class HomePage {
     await this.getKeyword();
     await this.setPosterBaseUrl();
     await this.getMovies();
-  }
-
-  async searchClick(keyword: string)
-  {
-    console.log("click: " + keyword);
-    await this.mydata.set("keyword", keyword);
-    await this.getKeyword();
-    this.getMovies();
   }
 
   async getMovies()
@@ -111,3 +109,12 @@ export class HomePage {
   }
   
 }
+/*
+  async searchClick(keyword: string)
+  {
+    console.log("click: " + keyword);
+    await this.mydata.set("keyword", keyword);
+    await this.getKeyword();
+    this.getMovies();
+  }
+*/
