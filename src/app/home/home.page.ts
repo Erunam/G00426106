@@ -21,6 +21,7 @@ export class HomePage {
   constructor(private mydata: MyData, private movie: MovieDB) {}
   
   ngOnInit(){
+    this.movieData = ["", ""];
     this.runApp();
   }
 
@@ -34,7 +35,7 @@ export class HomePage {
     await this.checkFirstRun();
     await this.getKeyword();
     await this.setPosterBaseUrl();
-    this.getMovies();
+    await this.getMovies();
   }
 
   async searchClick(keyword: string)
@@ -45,15 +46,15 @@ export class HomePage {
     this.getMovies();
   }
 
-  getMovies()
+  async getMovies()
   {
     if (this.keyword == null || this.keyword == "")
     {
-      this.getTrending();
+      await this.getTrending();
     }
     else
     {
-      this.searchMovies(this.keyword);
+      await this.searchMovies(this.keyword);
     }
   }
 
@@ -75,7 +76,9 @@ export class HomePage {
   {
     //this.movieData = await this.movie.getMovies( keyword );
     console.log("searching movie ... ");
-    this.movieData = await this.movie.getMovies( keyword );
+    let result = await this.movie.getMovies( keyword );
+    console.log(result);
+    this.movieData = result;
     console.log(this.movieData);
   }
 
@@ -83,8 +86,9 @@ export class HomePage {
   {
     //let result = await this.movie.getTrendingMovie();
     console.log("getting trending...");
-    this.movieData = await this.movie.getTrendingMovie();
-    console.log(this.movieData);
+    let result = await this.movie.getTrendingMovie();
+    this.movieData = result.results;
+    console.log(JSON.stringify(this.movieData));
   }
   
   async checkFirstRun()

@@ -10,15 +10,11 @@ import { MovieDB } from './services/movie-db';
   imports: [IonApp, IonRouterOutlet,],
 })
 export class AppComponent {
-  constructor(/*private mydata: MyData, private movie: MovieDB*/) {}
-
-  async ngOnInit(){
-//    await this.checkFirstRun();
-  }
+  constructor(private mydata: MyData) {}
 
   async ngOnDestroy(){
-    console.log("destroy App ...");
-    //await this.mydata.remove("keyword");
+    console.log("Destroy App ...");
+    await this.mydata.remove("keyword");
   }
 /*
   async checkFirstRun(){
