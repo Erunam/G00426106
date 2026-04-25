@@ -65,6 +65,11 @@ ion-icon.heart{
   padding-bottom: 0;
 }
 
+ion-icon.heartButton{
+  color: maroon;
+  padding-left: 16px;
+}
+
 ion-icon.heart:hover{
   color: red;
 }
@@ -76,7 +81,7 @@ ion-icon.home{
   padding-bottom: 0;
 }
 
-ion-card {
+ion-card.title {
     max-width: 90%;
 }
 
