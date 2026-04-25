@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { contractOutline, heart } from 'ionicons/icons';
+import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { home } from 'ionicons/icons';
 
@@ -30,8 +30,7 @@ import { home } from 'ionicons/icons';
              IonCard,
              IonCardHeader,
              IonCardTitle,
-             IonCardContent,
-             IonInput],
+             IonCardContent],
 })
 export class MoviesPage {
 
