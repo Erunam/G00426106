@@ -9,6 +9,7 @@ import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
+import { Favourites } from '../services/favourites';
 
 @Component({
   selector: 'app-home',
@@ -41,7 +42,7 @@ export class HomePage {
   posterSizeIndex = 0;
   apiKey = "e132512c4c29d4cde63e3ee5621ba016";
 
-  constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
+  constructor(private router: Router, private mydata: MyData, private movie: MovieDB, private fav: Favourites) {
     addIcons({ heart, heartOutline });
   }
   
@@ -127,6 +128,7 @@ export class HomePage {
     console.log("first run pending ...");
     await this.mydata.set("apiKey", this.apiKey);
     await this.movie.setBaseUrl();
+    await this.fav.initFavourites();
     console.log("first run done");
   }
   
