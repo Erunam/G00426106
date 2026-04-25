@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonTitle } from '@ionic/angular/standalone';
 import { MovieDB } from '../services/movie-db';
 import { MyData } from '../services/data';
 import { CommonModule } from '@angular/common';
@@ -14,22 +14,22 @@ import { heartOutline } from 'ionicons/icons';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [ RouterLink,
-             IonIcon,
-             FormsModule,
-             CommonModule,
-             IonHeader,
-             IonToolbar,
-             IonContent,
-             IonButton,
-             IonGrid,
-             IonRow,
-             IonCol,
-             IonCard,
-             IonCardHeader,
-             IonCardTitle,
-             IonCardContent,
-             IonInput],
+  imports: [RouterLink,
+    IonIcon,
+    FormsModule,
+    CommonModule,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonButton,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonInput, IonTitle],
 })
 export class HomePage {
   name = "G00426106";
@@ -46,13 +46,15 @@ export class HomePage {
   }
   
   ngOnInit(){
-    this.runApp();
+    this.runHome();
   }
 
+  /*
   async ngOnDestroy(){
     console.log("destroy Home Page ...");
     await this.mydata.remove("keyword");
   }
+  */
 
   async onSearchClick(){
     await this.mydata.set("keyword", this.keyword);
@@ -60,12 +62,11 @@ export class HomePage {
   }
 
   async onCardClick(movieId: number){
-    console.log(movieId);
     await this.mydata.set("movieId", movieId);
     this.router.navigate(['/movies']);
   }
 
-  async runApp()
+  async runHome()
   {
     await this.checkFirstRun();
     await this.getKeyword();
