@@ -1,20 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-grid>
+      <ion-row class="ion-justify-content-between">
+        <ion-col class="left">{{name}}</ion-col>
+        <ion-col class="right" >
+          <a [routerLink] = "['/favourites']">
+            <ion-icon size="large" aria-label="Favorite" name="heart">
+            </ion-icon>
+          </a>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
+<ion-button expand="full" (click)="onSearchClick()">Search</ion-button> <br/>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-card *ngFor="let movie of movieData" (click) = "onCardClick(movie.id)">
+  <img *ngIf="movie.poster_path !=null" [src]="posterBaseUrl+movie.poster_path" />
+  <ion-card-header>
+    <ion-card-title>{{movie.title}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{movie.overview}}
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
