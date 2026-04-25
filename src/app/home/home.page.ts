@@ -3,14 +3,33 @@ import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, 
 import { MovieDB } from '../services/movie-db';
 import { MyData } from '../services/data';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { IonIcon } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { heart } from 'ionicons/icons';
+import { heartOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [FormsModule, CommonModule, IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput],
+  imports: [ RouterLink,
+             IonIcon,
+             FormsModule,
+             CommonModule,
+             IonHeader,
+             IonToolbar,
+             IonContent,
+             IonButton,
+             IonGrid,
+             IonRow,
+             IonCol,
+             IonCard,
+             IonCardHeader,
+             IonCardTitle,
+             IonCardContent,
+             IonInput],
 })
 export class HomePage {
   name = "G00426106";
@@ -19,10 +38,12 @@ export class HomePage {
   baseUrl = "";
   posterSize = "";
   posterBaseUrl = "";
-  posterSizeIndex = 2;
+  posterSizeIndex = 0;
   apiKey = "e132512c4c29d4cde63e3ee5621ba016";
 
-  constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {}
+  constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
+    addIcons({ heart, heartOutline });
+  }
   
   ngOnInit(){
     this.runApp();
