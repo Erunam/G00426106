@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonContent, IonButton, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonInput, IonTitle, IonItemDivider, IonLabel, IonCardSubtitle } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonTitle, IonItemDivider, IonLabel, IonCardSubtitle } from '@ionic/angular/standalone';
 import { MovieDB } from '../services/movie-db';
 import { MyData } from '../services/data';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { contractOutline, heart } from 'ionicons/icons';
+import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { home } from 'ionicons/icons';
 
@@ -23,15 +23,13 @@ import { home } from 'ionicons/icons';
              IonHeader,
              IonToolbar,
              IonContent,
-             IonButton,
              IonGrid,
              IonRow,
              IonCol,
              IonCard,
              IonCardHeader,
              IonCardTitle,
-             IonCardContent,
-             IonInput],
+             IonCardContent],
 })
 
 export class PersonsPage {

@@ -43,6 +43,8 @@ export class MoviesPage {
   posterSize = "";
   posterBaseUrl = "";
   posterSizeIndex = 0;
+  favButton = ["Add to Favourites", "Remove from Favourites"];
+  favourited = 0;
  
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
         addIcons({ heart, heartOutline, home });
@@ -58,11 +60,15 @@ export class MoviesPage {
     this.runMovies();
   }
 
+  onFavClick(){
+    this.favourited = this.favourited == 1 ? 0 : 1;
+    console.log(this.movieId);
+  }
+
   async onCardClick(personId: number){
     await this.mydata.set("personId", personId);
     this.router.navigate(['/persons']);
   }
-
 
   async runMovies(){
     let movieId = await this.mydata.get("movieId");
