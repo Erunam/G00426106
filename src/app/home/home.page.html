@@ -2,30 +2,31 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row class="ion-justify-content-between">
-        <ion-col class="left">{{name}}</ion-col>
+        <ion-col class="left">
+          <ion-title><b>{{name}}</b></ion-title>
+        </ion-col>
         <ion-col class="right" >
           <a [routerLink] = "['/favourites']">
-            <ion-icon size="large" aria-label="Favorite" name="heart">
+            <ion-icon size="large" class="heart" aria-label="Favorite" name="heart">
             </ion-icon>
           </a>
         </ion-col>
-    </ion-row>
-  </ion-grid>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
-<ion-button expand="full" (click)="onSearchClick()">Search</ion-button> <br/>
+  <ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
+  <ion-button expand="full" (click)="onSearchClick()">Search</ion-button> <br/>
 
-<ion-card *ngFor="let movie of movieData" (click) = "onCardClick(movie.id)">
-  <img *ngIf="movie.poster_path !=null" [src]="posterBaseUrl+movie.poster_path" />
-  <ion-card-header>
-    <ion-card-title>{{movie.title}}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    {{movie.overview}}
-  </ion-card-content>
-</ion-card>
-
+  <ion-card *ngFor="let movie of movieData" (click) = "onCardClick(movie.id)">
+    <img *ngIf="movie.poster_path !=null" [src]="posterBaseUrl+movie.poster_path" />
+    <ion-card-header>
+      <ion-card-title>{{movie.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{movie.overview}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -12,12 +12,14 @@ export class MovieDB {
   movieTrendingUrl = "https://api.themoviedb.org/3/trending/movie/day?api_key=";
   movieSearch_1 = "https://api.themoviedb.org/3/search/movie?query=";
   movieSearch_2 = "&api_key=";
-  movieData_1 = "https://api.themoviedb.org/3/movie/";
-  movieData_2 = "/credits?api_key=";
+  movieDetails_1 = "https://api.themoviedb.org/3/movie/";
+  movieDetails_2 = "/credits?api_key=";
   memberData_1 = "https://api.themoviedb.org/3/person/";
   memberData_2 = "?api_key=";
   movieCredit_1 = "https://api.themoviedb.org/3/person/";
   movieCredit_2 = "/movie_credits?api_key=";
+  movieData_1 = "https://api.themoviedb.org/3/movie/";
+  movieData_2 = "?api_key=";
   
   options: HttpOptions =
   {
@@ -26,6 +28,11 @@ export class MovieDB {
   
   constructor(private mydata: MyData ) {}
 
+  /**
+   * Returns the cast and crew for given movie id
+   * @param personId 
+   * @returns 
+   */
   async getMovieCredit(personId: number)
   {
     console.log("getMovieCredit ...");
@@ -35,6 +42,11 @@ export class MovieDB {
     return await this.get(this.options);
   }
 
+  /**
+   * Return the member data
+   * @param personId 
+   * @returns 
+   */
   async getMemberData(personId: number)
   {
     console.log("getMemberData ...");
@@ -44,6 +56,25 @@ export class MovieDB {
     return await this.get(this.options);
   }
 
+  /**
+   * Return details about cast and crew for given movie id
+   * @param id 
+   * @returns 
+   */
+  async getMovieDetails(id: number)
+  {
+    console.log("getMovieCast ...");
+    let apiKey = await this.mydata.get("apiKey");
+    this.options.url = this.movieDetails_1 + id + this.movieDetails_2 + apiKey;
+    console.log(this.options.url);
+    return await this.get(this.options);
+  }
+
+  /**
+   * Return movie details for given movie id
+   * @param id 
+   * @returns 
+   */
   async getMovieData(id: number)
   {
     console.log("getMovieData ...");
@@ -51,8 +82,14 @@ export class MovieDB {
     this.options.url = this.movieData_1 + id + this.movieData_2 + apiKey;
     console.log(this.options.url);
     return await this.get(this.options);
+
   }
 
+  /**
+   * Retunr search results
+   * @param keyword 
+   * @returns 
+   */
   async getMovies(keyword: string)
   {
     console.log("getMovies ...");
@@ -62,6 +99,10 @@ export class MovieDB {
     return await this.get(this.options);
   }
 
+  /**
+   * Returns trending movies
+   * @returns 
+   */
   async getTrendingMovie()
   {
     console.log("getTrendingMovie ...");
