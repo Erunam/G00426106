@@ -50,13 +50,6 @@ export class HomePage {
     this.runHome();
   }
 
-  /*
-  async ngOnDestroy(){
-    console.log("destroy Home Page ...");
-    await this.mydata.remove("keyword");
-  }
-  */
-
   async onSearchClick(){
     await this.mydata.set("keyword", this.keyword);
     await this.getMovies();
@@ -113,11 +106,9 @@ export class HomePage {
   
   async checkFirstRun()
   {
-    console.log("getting firstRun flag..");
     let firstRun = await this.mydata.get("firstRun");
     if (firstRun == null)
     {
-      console.log("initialise..")
       await this.initialise();
       await this.mydata.set("firstRun", true);
     }
@@ -125,20 +116,9 @@ export class HomePage {
 
   async initialise()
   {
-    console.log("first run pending ...");
     await this.mydata.set("apiKey", this.apiKey);
     await this.movie.setBaseUrl();
     await this.fav.initFavourites();
-    console.log("first run done");
   }
   
 }
-/*
-  async searchClick(keyword: string)
-  {
-    console.log("click: " + keyword);
-    await this.mydata.set("keyword", keyword);
-    await this.getKeyword();
-    this.getMovies();
-  }
-*/
