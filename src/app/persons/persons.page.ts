@@ -46,6 +46,7 @@ export class PersonsPage {
   baseUrl = "";
   posterSize = "";
   posterBaseUrl = "";
+  moviePosterBaseUrl = "";
   posterSizeIndex = 0;
  
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
@@ -112,5 +113,6 @@ export class PersonsPage {
     let sizes = JSON.parse(await this.mydata.get("posterSizes"));
     let posterSize = sizes[this.posterSizeIndex];
     this.posterBaseUrl = baseUrl + posterSize;
+    this.moviePosterBaseUrl = baseUrl + sizes[0];
   }
 }
