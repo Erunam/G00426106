@@ -7,15 +7,17 @@ import { MyData } from './data';
 
 export class Favourites {
 
-  items!: number[];
+  items: number[] = [];
 
-  constructor(private mydata: MyData ) {}
+  constructor(private mydata: MyData ) { }
 
   async isFavourited(id: number){
     await this.getFavourites();
-    for (let i = 0; i<this.items.length; i++ ){
-      if (id == this.items[i]){
-        return true;
+    if (this.items != null ){
+      for (let i = 0; i<this.items.length; i++ ){
+        if (id == this.items[i]){
+          return true;
+        }
       }
     }
     return false;
@@ -44,7 +46,10 @@ export class Favourites {
 
   async getFavourites(){
     let favItems = await this.mydata.get("favourites");
-    this.items = JSON.parse(favItems);
+    if (favItems != null)
+    {
+      this.items = JSON.parse(favItems);
+    }
   }
 
   async obtainFavourites(){
@@ -56,7 +61,7 @@ export class Favourites {
     let favItems = await this.mydata.get("favourites");
     if (favItems == null)
     {
-      await this.mydata.set("favourites", null);
+      await this.mydata.set("favourites", JSON.stringify(this.items));
     }
   }
 
