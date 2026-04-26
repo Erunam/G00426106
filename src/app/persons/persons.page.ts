@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart } from 'ionicons/icons';
+import { heart, removeCircleOutline, addCircleOutline } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { home } from 'ionicons/icons';
 
@@ -32,6 +32,9 @@ import { home } from 'ionicons/icons';
              IonCardContent],
 })
 
+/**
+ * This page provides detailed information about actors and crew
+ */
 export class PersonsPage {
   personId!: number;
   personName!: string;
@@ -41,37 +44,75 @@ export class PersonsPage {
   personBio!: string;
   personPoster!: string;
   personCredits!: any;
+  
   baseUrl = "";
-  posterSize = "";
+  posterSizes!: number[];
   posterBaseUrl = "";
-  moviePosterBaseUrl = "";
   posterSizeIndex = 0;
- 
+  moviePosterBaseUrl = "";
+
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
-        addIcons({ heart, heartOutline, home });
+        addIcons({home,heart,removeCircleOutline,addCircleOutline,heartOutline});
   }
 
   ngOnInit() {
   }
 
 
+  /**
+   * Actions performed when page is about to be displayed
+   */
   ionViewWillEnter(){
     this.runPersons();
   }
 
+  /**
+   * Resizes the images to larger size by updating the poster base url
+   * Event: Increase button click
+   */
+  onSizeUp(){
+    this.posterSizeIndex++;
+    if (this.posterSizeIndex >= this.posterSizes.length){
+      this.posterSizeIndex = this.posterSizes.length - 1;
+    }
+    this.setPosterBaseUrl();
+  }
+
+  /**
+   * Resizes the images to smaller size by updating the poster base url
+   * Event: Decrease button click
+   */
+  onSizeDown(){
+    this.posterSizeIndex--;
+    if (this.posterSizeIndex < 0){
+      this.posterSizeIndex = 0;
+    }
+    this.setPosterBaseUrl();
+  }
+
+  /**
+   * Navigates to Movie Details Page
+   * @param movieId 
+   */
   async onCardClick(movieId: number){
     await this.mydata.set("movieId", movieId);
     this.router.navigate(['/movies']);
   }
 
+  /**
+   * Main method for the page
+   */
   async runPersons(){
     let personId = await this.mydata.get("personId");
     this.personId = personId;
-    await this.setPosterBaseUrl();
+    await this.initPosterBaseUrl();
     await this.getPersonData();
     await this.getPersonCredits();
   }
 
+  /**
+   * Retrieves the list of other movies the member has been credited for
+   */
   async getPersonCredits(){
     if ( this.personId != null ){
       let result = await this.movie.getMovieCredit(this.personId);
@@ -79,6 +120,9 @@ export class PersonsPage {
     }
   }
 
+  /**
+   * Retrieve details about person in question
+   */
   async getPersonData(){
     if ( this.personId != null ){
       let result = await this.movie.getMemberData(this.personId);
@@ -91,6 +135,11 @@ export class PersonsPage {
     }
   }
 
+  /**
+   * Parse also know as array to produce clean string
+   * @param aka 
+   * @returns 
+   */
   parseAka(aka: string[]){
     let akaName = "";
     for (let i = 0; i < aka.length; i++){
@@ -100,11 +149,24 @@ export class PersonsPage {
     return akaName;
   }
 
+  /**
+   * Updates the images link (base part)
+   */
   async setPosterBaseUrl(){
+    this.posterBaseUrl = this.baseUrl + this.posterSizes[this.posterSizeIndex];
+  }
+
+  /**
+   * Retrieves parts of images url stored in local storage
+   */
+  async initPosterBaseUrl(){
     let baseUrl = await this.mydata.get("baseUrl");
+    this.baseUrl = baseUrl;
     let sizes = JSON.parse(await this.mydata.get("posterSizes"));
-    let posterSize = sizes[this.posterSizeIndex];
-    this.posterBaseUrl = baseUrl + posterSize;
-    this.moviePosterBaseUrl = baseUrl + sizes[0];
+    this.posterSizes = sizes;
+
+    this.moviePosterBaseUrl = this.baseUrl + this.posterSizes[0];
+
+    await this.setPosterBaseUrl();
   }
 }

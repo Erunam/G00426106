@@ -6,6 +6,10 @@ import { MyData } from './data';
   providedIn: 'root',
 })
 
+/**
+ * Service providing movie information from TheMovieDB
+ * It is designed to provide specific requested set of data as per methods
+ */
 export class MovieDB {
   
   serviceUrl = "https://api.themoviedb.org/3/configuration?api_key=";
@@ -78,7 +82,7 @@ export class MovieDB {
   }
 
   /**
-   * Retunr search results
+   * Return search results
    * @param keyword 
    * @returns 
    */
@@ -100,11 +104,22 @@ export class MovieDB {
     return await this.get(this.options);
   }
 
+  /**
+   * Stores provided API key in local storage
+   * @param apiKey 
+   */
   async setApiKey(apiKey: string)
   {
     await this.mydata.set("apiKey", apiKey);
   }
 
+  /**
+   * Retrieves and stores url components used to generate links to the images
+   *  - base url
+   *  - array providing set of picture sizes available 
+   *  - default size of images
+   *  - the size of the array
+   */
   async setBaseUrl()
   {
     let apiKey = await this.mydata.get("apiKey");
@@ -117,6 +132,11 @@ export class MovieDB {
     this.mydata.set("imageSizeLength", result.images.poster_sizes.length);
   }
 
+  /**
+   * Data retrieval method
+   * @param options must be HttpOption and contain min "url" component specified
+   * @returns 
+   */
   async get(options: HttpOptions)
   {
     return (await CapacitorHttp.get(options)).data;

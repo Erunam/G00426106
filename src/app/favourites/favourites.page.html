@@ -3,11 +3,11 @@
     <ion-grid>
       <ion-row class="ion-justify-content-between">
         <ion-col class="left">
-          <ion-title><h2><b>Favourities</b></h2></ion-title>
+          <ion-title><h2><b>Favourites</b></h2></ion-title>
         </ion-col>
         <ion-col class="right" >
           <a [routerLink] = "['/home']">
-            <ion-icon size="large" class="home" aria-label="Favorite" name="home">
+            <ion-icon size="large" class="home" aria-label="Favorite" name="home" aria-label="Home">
           </ion-icon>
           </a>
         </ion-col>
@@ -21,7 +21,7 @@
   <ion-card *ngFor="let movie of favMoviesData" >
       <ion-grid (click) = "onCardClick(movie.id)">
         <ion-row class="ion-justify-content-between">
-          <ion-col class="left">
+          <ion-col class="left" size="8">
             <ion-title>{{movie.original_title}}</ion-title>
                 <ion-card-content>
                   {{movie.overview}}
