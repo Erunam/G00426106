@@ -9,6 +9,7 @@ import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
+import { Favourites } from '../services/favourites';
 
 @Component({
   selector: 'app-home',
@@ -41,20 +42,13 @@ export class HomePage {
   posterSizeIndex = 0;
   apiKey = "e132512c4c29d4cde63e3ee5621ba016";
 
-  constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
+  constructor(private router: Router, private mydata: MyData, private movie: MovieDB, private fav: Favourites) {
     addIcons({ heart, heartOutline });
   }
   
   ngOnInit(){
     this.runHome();
   }
-
-  /*
-  async ngOnDestroy(){
-    console.log("destroy Home Page ...");
-    await this.mydata.remove("keyword");
-  }
-  */
 
   async onSearchClick(){
     await this.mydata.set("keyword", this.keyword);
@@ -112,11 +106,9 @@ export class HomePage {
   
   async checkFirstRun()
   {
-    console.log("getting firstRun flag..");
     let firstRun = await this.mydata.get("firstRun");
     if (firstRun == null)
     {
-      console.log("initialise..")
       await this.initialise();
       await this.mydata.set("firstRun", true);
     }
@@ -124,19 +116,9 @@ export class HomePage {
 
   async initialise()
   {
-    console.log("first run pending ...");
     await this.mydata.set("apiKey", this.apiKey);
     await this.movie.setBaseUrl();
-    console.log("first run done");
+    await this.fav.initFavourites();
   }
   
 }
-/*
-  async searchClick(keyword: string)
-  {
-    console.log("click: " + keyword);
-    await this.mydata.set("keyword", keyword);
-    await this.getKeyword();
-    this.getMovies();
-  }
-*/

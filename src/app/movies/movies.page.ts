@@ -10,6 +10,7 @@ import { addIcons } from 'ionicons';
 import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { home } from 'ionicons/icons';
+import { Favourites } from '../services/favourites';
 
 @Component({
   selector: 'app-movies',
@@ -45,24 +46,28 @@ export class MoviesPage {
   posterSizeIndex = 0;
   favButton = ["Add to Favourites", "Remove from Favourites"];
   favourited = 0;
+
+  testArray = [1, 4, 6, 7];
  
-  constructor(private router: Router, private mydata: MyData, private movie: MovieDB) {
+  constructor(private router: Router, private mydata: MyData, private movie: MovieDB, private fav: Favourites) {
         addIcons({ heart, heartOutline, home });
   }
 
   ngOnInit(){
-    console.log("Movies ngOnInit");
   }
 
-
   ionViewWillEnter(){
-    console.log("Movies ionViewWillEnter");
     this.runMovies();
   }
 
-  onFavClick(){
-    this.favourited = this.favourited == 1 ? 0 : 1;
-    console.log(this.movieId);
+  async onFavClick(){
+    if (this.favourited == 0){
+      await this.fav.addFavourite(this.movieId);
+    }
+    else{
+      await this.fav.remFavourite(this.movieId);
+    }
+    await this.updateFav();
   }
 
   async onCardClick(personId: number){
@@ -76,6 +81,17 @@ export class MoviesPage {
     await this.setPosterBaseUrl();
     await this.getMovie();
     await this.getMovieDetails();
+    await this.updateFav();
+  }
+
+  async updateFav(){
+    let f = await this.fav.isFavourited(this.movieId);
+    if (f){
+      this.favourited = 1;
+    }
+    else{
+      this.favourited = 0;
+    }
   }
 
   async getMovie(){
@@ -83,7 +99,6 @@ export class MoviesPage {
       let result = await this.movie.getMovieData( this.movieId );
       this.movieTitle = result.original_title;
       this.movieOverview = result.overview;
-      console.log("getMovie end");
     }
   }
 
@@ -92,7 +107,6 @@ export class MoviesPage {
       let result = await this.movie.getMovieDetails( this.movieId );
       this.movieCast = result.cast;
       this.movieCrew = result.crew;
-      console.log("getMovieDetails end");
     }
   }
 

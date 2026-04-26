@@ -52,12 +52,10 @@ export class PersonsPage {
   }
 
   ngOnInit() {
-    console.log("Persons ngOnInit");
   }
 
 
   ionViewWillEnter(){
-    console.log("Persons ionViewWillEnter");
     this.runPersons();
   }
 
@@ -78,8 +76,6 @@ export class PersonsPage {
     if ( this.personId != null ){
       let result = await this.movie.getMovieCredit(this.personId);
       this.personCredits = result.cast;
-      console.log("getPersonCredits end");
-      console.log( this.personCredits);
     }
   }
 
@@ -92,7 +88,6 @@ export class PersonsPage {
       this.personDOB = result.birthday;
       this.personDOD = result.deathday;
       this.personBio = result.biography;
-      console.log("getPersonData end");
     }
   }
 
@@ -102,7 +97,6 @@ export class PersonsPage {
       akaName += aka[i] + ", ";
     }
     akaName = akaName.substring(0, akaName.length - 2);
-    console.log(akaName);
     return akaName;
   }
 
