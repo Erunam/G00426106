@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart } from 'ionicons/icons';
+import { heart, removeCircleOutline, addCircleOutline } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { home } from 'ionicons/icons';
 import { Favourites } from '../services/favourites';
@@ -40,17 +40,19 @@ export class MoviesPage {
   movieCrew!: any;
   movieTitle!: string;
   movieOverview!: string;
+
   baseUrl = "";
-  posterSize = "";
+  posterSizes!: number[];
   posterBaseUrl = "";
   posterSizeIndex = 0;
+
   favButton = ["Add to Favourites", "Remove from Favourites"];
   favourited = 0;
 
   testArray = [1, 4, 6, 7];
  
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB, private fav: Favourites) {
-        addIcons({ heart, heartOutline, home });
+        addIcons({home,heart,removeCircleOutline,addCircleOutline,heartOutline});
   }
 
   ngOnInit(){
@@ -58,6 +60,21 @@ export class MoviesPage {
 
   ionViewWillEnter(){
     this.runMovies();
+  }
+
+  onSizeUp(){
+    this.posterSizeIndex++;
+    if (this.posterSizeIndex >= this.posterSizes.length){
+      this.posterSizeIndex = this.posterSizes.length - 1;
+    }
+    this.setPosterBaseUrl();
+  }
+  onSizeDown(){
+    this.posterSizeIndex--;
+    if (this.posterSizeIndex < 0){
+      this.posterSizeIndex = 0;
+    }
+    this.setPosterBaseUrl();
   }
 
   async onFavClick(){
@@ -78,7 +95,7 @@ export class MoviesPage {
   async runMovies(){
     let movieId = await this.mydata.get("movieId");
     this.movieId = movieId;
-    await this.setPosterBaseUrl();
+    await this.initPosterBaseUrl();
     await this.getMovie();
     await this.getMovieDetails();
     await this.updateFav();
@@ -111,9 +128,15 @@ export class MoviesPage {
   }
 
   async setPosterBaseUrl(){
+    this.posterBaseUrl = this.baseUrl + this.posterSizes[this.posterSizeIndex];
+  }
+
+  async initPosterBaseUrl(){
     let baseUrl = await this.mydata.get("baseUrl");
+    this.baseUrl = baseUrl;
     let sizes = JSON.parse(await this.mydata.get("posterSizes"));
-    let posterSize = sizes[this.posterSizeIndex];
-    this.posterBaseUrl = baseUrl + posterSize;
+    this.posterSizes = sizes;
+
+    await this.setPosterBaseUrl();
   }
 }

@@ -10,6 +10,8 @@ import { addIcons } from 'ionicons';
 import { heart } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 import { Favourites } from '../services/favourites';
+import { addCircleOutline } from 'ionicons/icons';
+import { removeCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -30,24 +32,41 @@ import { Favourites } from '../services/favourites';
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonInput, IonTitle],
+    IonInput,
+    IonTitle],
 })
 export class HomePage {
   name = "G00426106";
   keyword = "";
   movieData!: any;
+  
   baseUrl = "";
-  posterSize = "";
+  posterSizes!: number[];
   posterBaseUrl = "";
   posterSizeIndex = 0;
   apiKey = "e132512c4c29d4cde63e3ee5621ba016";
 
   constructor(private router: Router, private mydata: MyData, private movie: MovieDB, private fav: Favourites) {
-    addIcons({ heart, heartOutline });
+    addIcons({ heart, heartOutline, addCircleOutline, removeCircleOutline });
   }
   
   ngOnInit(){
     this.runHome();
+  }
+
+  onSizeUp(){
+    this.posterSizeIndex++;
+    if (this.posterSizeIndex >= this.posterSizes.length){
+      this.posterSizeIndex = this.posterSizes.length - 1;
+    }
+    this.setPosterBaseUrl();
+  }
+  onSizeDown(){
+    this.posterSizeIndex--;
+    if (this.posterSizeIndex < 0){
+      this.posterSizeIndex = 0;
+    }
+    this.setPosterBaseUrl();
   }
 
   async onSearchClick(){
@@ -64,7 +83,7 @@ export class HomePage {
   {
     await this.checkFirstRun();
     await this.getKeyword();
-    await this.setPosterBaseUrl();
+    await this.initPosterBaseUrl();
     await this.getMovies();
   }
 
@@ -86,10 +105,16 @@ export class HomePage {
   }
 
   async setPosterBaseUrl(){
+    this.posterBaseUrl = this.baseUrl + this.posterSizes[this.posterSizeIndex];
+  }
+
+  async initPosterBaseUrl(){
     let baseUrl = await this.mydata.get("baseUrl");
+    this.baseUrl = baseUrl;
     let sizes = JSON.parse(await this.mydata.get("posterSizes"));
-    let posterSize = sizes[this.posterSizeIndex];
-    this.posterBaseUrl = baseUrl + posterSize;
+    this.posterSizes = sizes;
+
+    await this.setPosterBaseUrl();
   }
   
   async searchMovies(keyword: string)

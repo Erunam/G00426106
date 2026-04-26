@@ -7,13 +7,15 @@
         </ion-col>
         <ion-col class="right" >
           <a [routerLink] = "['/home']">
-            <ion-icon size="large" class="home" aria-label="Favorite" name="home">
+            <ion-icon size="large" class="home" aria-label="Home" name="home">
           </ion-icon>
           </a>
           <a [routerLink] = "['/favourites']">
             <ion-icon size="large" class="heart" aria-label="Favorite" name="heart">
             </ion-icon>
           </a>
+          <ion-icon class="menu" name="remove-circle-outline" size="large" (click)="onSizeDown()" aria-label="Increase"></ion-icon>
+          <ion-icon class="menu" name="add-circle-outline" size="large" (click)="onSizeUp()" aria-label="Increase"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>

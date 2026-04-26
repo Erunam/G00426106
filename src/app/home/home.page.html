@@ -10,6 +10,8 @@
             <ion-icon size="large" class="heart" aria-label="Favorite" name="heart">
             </ion-icon>
           </a>
+          <ion-icon class="menu" name="remove-circle-outline" size="large" (click)="onSizeDown()" aria-label="Increase"></ion-icon>
+          <ion-icon class="menu" name="add-circle-outline" size="large" (click)="onSizeUp()" aria-label="Decrease"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -17,11 +19,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
-  <ion-button expand="full" (click)="onSearchClick()">Search</ion-button> <br/>
-
+  <ion-card>
+    <ion-card-header>
+      <ion-input label="Search for movie:" placeholder="movie title" [(ngModel)]="keyword"></ion-input>
+    </ion-card-header>
+      <ion-button expand="full" shape="round" color="secondary" (click)="onSearchClick()">Search</ion-button>
+  </ion-card>
+  
   <ion-card *ngFor="let movie of movieData" (click) = "onCardClick(movie.id)">
+    
     <img *ngIf="movie.poster_path !=null" [src]="posterBaseUrl+movie.poster_path" />
+
     <ion-card-header>
       <ion-card-title>{{movie.title}}</ion-card-title>
     </ion-card-header>
