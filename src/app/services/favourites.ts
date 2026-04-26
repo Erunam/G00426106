@@ -5,12 +5,20 @@ import { MyData } from './data';
   providedIn: 'root',
 })
 
+/**
+ * This class provides functionality to add/removal and store the selected items
+ */
 export class Favourites {
 
   items: number[] = [];
 
   constructor(private mydata: MyData ) { }
 
+  /**
+   * Checks if the item id exists in the data set
+   * @param id 
+   * @returns
+   */
   async isFavourited(id: number){
     await this.getFavourites();
     if (this.items != null ){
@@ -23,6 +31,10 @@ export class Favourites {
     return false;
   }
 
+  /**
+   * Add the item to the data set if it does not exists already
+   * @param id 
+   */
   async addFavourite(id: number){
     await this.getFavourites();
     let fav = await this.isFavourited(id);
@@ -32,6 +44,10 @@ export class Favourites {
     await this.mydata.set("favourites", JSON.stringify(this.items));  
   }
 
+  /**
+   * Remove the item from the data set
+   * @param id 
+   */
   async remFavourite(id: number){
     await this.getFavourites();
     let temp: number[] = new Array();
@@ -44,6 +60,9 @@ export class Favourites {
     await this.mydata.set("favourites", JSON.stringify(this.items))
   }
 
+  /**
+   * Reads the stored list of id's
+   */
   async getFavourites(){
     let favItems = await this.mydata.get("favourites");
     if (favItems != null)
@@ -52,11 +71,19 @@ export class Favourites {
     }
   }
 
+  /**
+   * Provides the stored id's to the program
+   * @returns 
+   */
   async obtainFavourites(){
     await this.getFavourites();
     return this.items;
   }
 
+  /**
+   * Initialise the favourites base
+   *  must be initialised at the first program run
+   */
   async initFavourites(){
     let favItems = await this.mydata.get("favourites");
     if (favItems == null)

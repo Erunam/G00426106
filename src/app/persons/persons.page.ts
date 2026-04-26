@@ -32,6 +32,9 @@ import { home } from 'ionicons/icons';
              IonCardContent],
 })
 
+/**
+ * This page provides detailed information about actors and crew
+ */
 export class PersonsPage {
   personId!: number;
   personName!: string;
@@ -56,17 +59,29 @@ export class PersonsPage {
   }
 
 
+  /**
+   * Actions performed when page is about to be displayed
+   */
   ionViewWillEnter(){
     this.runPersons();
   }
 
-    onSizeUp(){
+  /**
+   * Resizes the images to larger size by updating the poster base url
+   * Event: Increase button click
+   */
+  onSizeUp(){
     this.posterSizeIndex++;
     if (this.posterSizeIndex >= this.posterSizes.length){
       this.posterSizeIndex = this.posterSizes.length - 1;
     }
     this.setPosterBaseUrl();
   }
+
+  /**
+   * Resizes the images to smaller size by updating the poster base url
+   * Event: Decrease button click
+   */
   onSizeDown(){
     this.posterSizeIndex--;
     if (this.posterSizeIndex < 0){
@@ -75,11 +90,18 @@ export class PersonsPage {
     this.setPosterBaseUrl();
   }
 
+  /**
+   * Navigates to Movie Details Page
+   * @param movieId 
+   */
   async onCardClick(movieId: number){
     await this.mydata.set("movieId", movieId);
     this.router.navigate(['/movies']);
   }
 
+  /**
+   * Main method for the page
+   */
   async runPersons(){
     let personId = await this.mydata.get("personId");
     this.personId = personId;
@@ -88,6 +110,9 @@ export class PersonsPage {
     await this.getPersonCredits();
   }
 
+  /**
+   * Retrieves the list of other movies the member has been credited for
+   */
   async getPersonCredits(){
     if ( this.personId != null ){
       let result = await this.movie.getMovieCredit(this.personId);
@@ -95,6 +120,9 @@ export class PersonsPage {
     }
   }
 
+  /**
+   * Retrieve details about person in question
+   */
   async getPersonData(){
     if ( this.personId != null ){
       let result = await this.movie.getMemberData(this.personId);
@@ -107,6 +135,11 @@ export class PersonsPage {
     }
   }
 
+  /**
+   * Parse also know as array to produce clean string
+   * @param aka 
+   * @returns 
+   */
   parseAka(aka: string[]){
     let akaName = "";
     for (let i = 0; i < aka.length; i++){
@@ -116,10 +149,16 @@ export class PersonsPage {
     return akaName;
   }
 
+  /**
+   * Updates the images link (base part)
+   */
   async setPosterBaseUrl(){
     this.posterBaseUrl = this.baseUrl + this.posterSizes[this.posterSizeIndex];
   }
 
+  /**
+   * Retrieves parts of images url stored in local storage
+   */
   async initPosterBaseUrl(){
     let baseUrl = await this.mydata.get("baseUrl");
     this.baseUrl = baseUrl;

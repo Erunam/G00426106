@@ -33,6 +33,11 @@ import { Favourites } from '../services/favourites';
              IonCardTitle,
              IonCardContent],
 })
+
+/**
+ * This page provides detailed information about movie members
+ * Also allows the user to add the movie to the favourite list
+ */
 export class MoviesPage {
 
   movieId!: number;
@@ -58,10 +63,17 @@ export class MoviesPage {
   ngOnInit(){
   }
 
+  /**
+   * Actions performed when page is about to be displayed
+   */
   ionViewWillEnter(){
     this.runMovies();
   }
 
+  /**
+   * Resizes the images to larger size by updating the poster base url
+   * Event: Increase button click
+   */
   onSizeUp(){
     this.posterSizeIndex++;
     if (this.posterSizeIndex >= this.posterSizes.length){
@@ -69,6 +81,11 @@ export class MoviesPage {
     }
     this.setPosterBaseUrl();
   }
+
+  /**
+   * Resizes the images to smaller size by updating the poster base url
+   * Event: Decrease button click
+   */
   onSizeDown(){
     this.posterSizeIndex--;
     if (this.posterSizeIndex < 0){
@@ -77,6 +94,10 @@ export class MoviesPage {
     this.setPosterBaseUrl();
   }
 
+  /**
+   * Adds movie to the favourites if it is not in the list already
+   * Removes movie from the favourites if it is already in
+   */
   async onFavClick(){
     if (this.favourited == 0){
       await this.fav.addFavourite(this.movieId);
@@ -87,20 +108,31 @@ export class MoviesPage {
     await this.updateFav();
   }
 
+  /**
+   * Navigates to Member Detail Page
+   * @param personId 
+   */
   async onCardClick(personId: number){
     await this.mydata.set("personId", personId);
     this.router.navigate(['/persons']);
   }
 
+  /**
+   * Main method for the page
+   */
   async runMovies(){
     let movieId = await this.mydata.get("movieId");
     this.movieId = movieId;
-    await this.initPosterBaseUrl();
-    await this.getMovie();
-    await this.getMovieDetails();
-    await this.updateFav();
+    await this.initPosterBaseUrl();                 // initialize the ursl
+    await this.getMovie();                          // retrieve movie information
+    await this.getMovieDetails();                   // retrieve cast and crew information
+    await this.updateFav();                         // update the button: add/remove favourites 
   }
 
+  /**
+   * Updates the add to/ remove from favourites button
+   * The text showed and its look is based on the "favourite" flag
+   */
   async updateFav(){
     let f = await this.fav.isFavourited(this.movieId);
     if (f){
@@ -111,6 +143,9 @@ export class MoviesPage {
     }
   }
 
+  /**
+   * Retrieve information about movie given by its id
+   */
   async getMovie(){
     if ( this.movieId != null ){
       let result = await this.movie.getMovieData( this.movieId );
@@ -119,6 +154,9 @@ export class MoviesPage {
     }
   }
 
+  /**
+   * Retrieve cast and crew data
+   */
   async getMovieDetails(){
     if ( this.movieId != null ){
       let result = await this.movie.getMovieDetails( this.movieId );
@@ -127,10 +165,16 @@ export class MoviesPage {
     }
   }
 
+  /**
+   * Updates the images link (base part)
+   */
   async setPosterBaseUrl(){
     this.posterBaseUrl = this.baseUrl + this.posterSizes[this.posterSizeIndex];
   }
-
+  
+  /**
+   * Retrieves parts of images url stored in local storage
+   */
   async initPosterBaseUrl(){
     let baseUrl = await this.mydata.get("baseUrl");
     this.baseUrl = baseUrl;
